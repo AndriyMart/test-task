@@ -1,0 +1,31 @@
+@mixin displayFlex() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+@mixin flex-direction($direction) {
+    -webkit-flex-direction: $direction;
+    flex-direction: $direction;
+}
+@mixin flex-align-items($value) {
+    -webkit-align-items: $value;
+    align-items: $value;
+}
+@mixin flex-justify-content($value) {
+    justify-content: $value;
+    -webkit-justify-content: $value;
+    -moz-justify-content: $value;
+}
+@mixin flex-justify-self($value) {
+    justify-self: $value;
+    -webkit-justify-self: $value;
+    -moz-justify-self: $value;
+}
+
+@mixin flex-align-self($value) {
+    align-self: $value;
+    -webkit-align-self: $value;
+    -moz-align-self: $value;
+}

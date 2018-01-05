@@ -1,0 +1,138 @@
+<div class="full-width-container">
+
+  <div class="row">
+
+    <div class="col-xs-4 col-s-4 col-md-4 col-l-4">
+      <form>
+
+        <h3 class="mb-4">Search</h3>
+
+        <div class="form-group row">
+
+          <label for="author" class="col-sm-3 col-form-label">Author</label>
+          <div class="col-sm-7">
+            <input class="form-control" id="author" #authorInput (focusout)="settingQuery(1, authorInput.value)">
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+
+          <label for="title" class="col-sm-3 col-form-label">Title</label>
+          <div class="col-sm-7">
+            <input class="form-control" id="title" #titleInput (focusout)="settingQuery(2, titleInput.value)">
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+
+          <label for="isbn" class="col-sm-3 col-form-label">ISBN</label>
+          <div class="col-sm-7">
+            <input class="form-control" id="isbn" #isbnInput (focusout)="settingQuery(3, isbnInput.value)">
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+          <label for="format" class="col-sm-3 col-form-label">Format</label>
+          <div class="col-sm-7">
+            <select class="form-control" id="format" (change)="settingQuery(4, format)" [(ngModel)] = 'format' name = 'format'>
+              <option value = "0">All</option>
+              <option *ngFor = "let format of formats" [value] = "format.id">{{format.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+
+          <div class="col">
+            <div class="row">
+
+              <label for="page-min" class="col-sm-6 col-form-label">Pages between</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="page-min" #pagesMinInput (focusout)="settingQuery(5, pagesMinInput.value)" type = "number">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="row">
+
+              <label  class="col-sm-2 col-form-label text-center" for="page-max">and</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="page-max" #pagesMaxInput (focusout)="settingQuery(6, pagesMaxInput.value)" type = "number"> 
+              </div>
+
+            </div>
+          </div>
+          <div class = "col-sm-12 not-valid" *ngIf = "notValidPages == true">*not valid pages range</div>
+        </div>
+
+        <div class="form-group row">
+
+          <div class="col">
+            <div class="row">
+
+              <label for="price-min" class="col-sm-6 col-form-label">Price between</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="price-min" #priceMinInput (focusout)="settingQuery(7, priceMinInput.value)" type = "number">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="row">
+
+              <label  class="col-sm-2 col-form-label text-center" for="price-max">and</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="price-max" #priceMaxInput (focusout)="settingQuery(8, priceMaxInput.value)" type = "number">
+              </div>
+
+            </div>
+          </div>
+          <div class = "col-sm-12 not-valid" *ngIf = "notValidPrices == true">*not valid price range</div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="col-xs-8 col-s-8 col-md-8 col-l-8">
+      <h3 class="mb-4">List of Matched Books</h3>
+      <div class = "available-books-wrap">
+        <div class = "title-wrap">
+          <div class = "add-book title">
+            Add new Book
+          </div>
+          <div class = "author-name title">
+            Author Name
+          </div>
+          <div class = "book-title title">
+            Name of book
+          </div>
+          <div class = "pages-count title">
+            Number of pages
+          </div>
+          <div class = "isbn-code title">
+            ISBN
+          </div>
+          <div class = "price title">
+            Price
+          </div>
+        </div>
+        <div class = "book-wrap" *ngFor = "let book of filteredItems">
+            <a class = 'add-book' routerLink='/book/{{book.id}}' [routerLinkActive]="['active']">Add New Book</a>
+          <div class = "author-name">{{book.author}} </div>
+          <div class = "book-title">{{book.title}}</div>
+          <div class = "pages-count">{{book.pages}} pages</div>
+          <div class = "isbn-code">{{book.isbn}}</div>
+          <div class = "price" *ngIf = "book.price">{{book.price | currency:UAH:true:'1.2-2'}}</div>
+        </div>
+        <a class = 'add-new-book' routerLink='/book/add' [routerLinkActive]="['active']">Add New Book</a>
+      </div>
+    </div>
+
+  </div>
+</div>

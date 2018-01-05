@@ -1,0 +1,48 @@
+@import '../../assets/mixins';
+
+.available-books-wrap{
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    @include displayFlex();
+    @include flex-direction(column);
+    @include flex-align-items(center);
+    .title-wrap{
+        width: 100%;
+        @include displayFlex();
+        @include flex-direction(row);
+        @include flex-align-items(center);
+        .title{
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+    .book-wrap{
+        width: 100%;
+        @include displayFlex();
+        @include flex-direction(row);
+        @include flex-align-items(center);
+    }
+    .author-name{
+        width: 25%;
+    }
+    .book-title{
+        width: 20%;
+    }
+    .pages-count{
+        width: 15%;
+    }
+    .isbn-code{
+        width: 15%;
+    }
+    .price{
+        width: 10%;
+    }
+    .add-book{
+        width: 15%;
+    }
+    .add-new-book{
+        @include flex-justify-self(left);
+    }
+}

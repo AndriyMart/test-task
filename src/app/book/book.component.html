@@ -1,0 +1,154 @@
+<div class="form-wrapper">
+
+  <form [formGroup]="bookForm" (ngSubmit)="postBook()">
+
+    <h3 class="mb-4">Book Info</h3>
+
+    <div class="form-group">
+      <label for="author" class = "title-label">
+        <div class = "title-wrap">
+            <span>Author</span> 
+            <span class = "required-span" 
+            *ngIf = "bookForm.controls['author'].errors?.required && firstSubmit == true">
+                *required field
+            </span>
+        </div>
+      </label>
+      <input formControlName="author" class="form-control" id="author" required>
+    </div>
+
+    <div class="form-group">
+      <label for="title" class = "title-label">
+        <div class = "title-wrap">
+            <span>Title</span>
+            <span class = "required-span" 
+            *ngIf = "bookForm.controls['title'].errors?.required && firstSubmit == true">
+                *required field
+            </span>
+        </div>
+      </label>
+      <input  formControlName="title" class="form-control" id="title">
+    </div>
+
+    <div class="form-group">
+      <label for="isbn" class = "title-label">
+          <div class = "title-wrap">
+              <span>ISBN</span>
+              <span class = "required-span" 
+              *ngIf = "bookForm.controls['isbn'].errors?.required && firstSubmit == true">
+                  *required field
+              </span>
+          </div>
+        </label>
+      <input formControlName="isbn" class="form-control" id="isbn" type="number">
+    </div>
+
+    <div class="form-group">
+      <label for="pages" class = "title-label">
+          <div class = "title-wrap">
+              <span>Number of Pages</span>
+              <span class = "required-span" 
+              *ngIf = "bookForm.controls['pages'].errors?.required && firstSubmit == true">
+                  *required field
+              </span>
+          </div>
+        </label>
+      <input  formControlName="pages" class="form-control" id="pages" type="number">
+    </div>
+
+    <div class="form-group">
+      <label for="format" class = "title-label">
+          <div class = "title-wrap">
+              <span>Format</span>
+              <span class = "required-span" 
+              *ngIf = "bookForm.controls['formatId'].errors?.required && firstSubmit == true">
+                  *required field
+              </span>
+          </div>
+        </label>
+      <select class="form-control" id="format" formControlName="formatId" 
+      [(ngModel)] = "selectedFormat" name = "format">
+        <option [ngValue] = "format.id" *ngFor = 'let format of formats'>{{format.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class = "title-label">
+          <div class = "title-wrap">
+              <span>Description</span>
+              <span class = "required-span" 
+              *ngIf = "bookForm.controls['description'].errors?.required && firstSubmit == true">
+                  *required field
+              </span>
+          </div>
+        </label>
+      <textarea class="form-control" formControlName="description" id="description" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="price" class = "title-label">
+          <div class = "title-wrap">
+              <span>Price</span>
+              <span class = "required-span" 
+              *ngIf = "bookForm.controls['price'].errors?.required && firstSubmit == true">
+                  *required field
+              </span>
+          </div>
+        </label>
+      <input class="form-control" formControlName="price" id="price" type="number">
+    </div>
+
+    <hr class="m-1 mb-5 mt-5">
+
+    <h3 class="mb-4">Publisher Info</h3>
+
+    <div class="form-group">
+      <label for="country" class = "title-label">
+        <div class = "title-wrap">
+            <span>Country</span>
+            <span class = "required-span" 
+            *ngIf = "bookForm.controls['countryId'].errors?.required && firstSubmit == true">
+                *required field
+            </span>
+        </div>
+      </label>
+      <select class="form-control" id="country" formControlName="countryId" [(ngModel)] = "selectedCountry" name = "country">
+        <option [ngValue] = "country.id" *ngFor = 'let country of countries'>{{country.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="city" class = "title-label">
+        <div class = "title-wrap">
+            <span>City</span>
+            <span class = "required-span" 
+            *ngIf = "bookForm.controls['cityId'].errors?.required && firstSubmit == true">
+                *required field
+            </span>
+        </div>
+      </label>
+      <select class="form-control" id="city" formControlName="cityId" [(ngModel)] = "selectedCity" name = 'city'>
+        <option [ngValue] = "city.id" *ngFor = 'let city of cities'>{{city.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="company" class = "title-label">
+        <div class = "title-wrap">
+            <span>Company</span>
+            <span class = "required-span" 
+            *ngIf = "bookForm.controls['publisherId'].errors?.required && firstSubmit == true">
+                *required field
+            </span>
+        </div>
+      </label>
+      <select class="form-control" id="company" formControlName="publisherId" [(ngModel)] = "selectedCompany" name = 'company'>
+        <option [ngValue] = "company.id" *ngFor = 'let company of companies'>{{company.name}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="!bookForm.valid && firstSubmit == true">Submit</button>
+
+  </form>
+
+</div>

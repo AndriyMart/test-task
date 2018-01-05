@@ -1,0 +1,16 @@
+@import '../../assets/mixins';
+
+.title-label{
+    width: 100%;
+    .title-wrap{
+        width: 100%;
+        @include displayFlex();
+        @include flex-direction(row);
+        @include flex-justify-content(space-between);
+        .required-span{
+            font-size: 12px;
+            color: red;
+            @include flex-align-self(flex-end);
+        }
+    }
+}

@@ -1,0 +1,35 @@
+<div class="container">
+  <h3 class="text-center">List Of Books</h3>
+</div>
+<div class = "available-books-wrap">
+  <div class = "title-wrap">
+    <div class = "add-book title">
+      Add new Book
+    </div>
+    <div class = "author-name title">
+      Author Name
+    </div>
+    <div class = "book-title title">
+      Name of book
+    </div>
+    <div class = "pages-count title">
+      Number of pages
+    </div>
+    <div class = "isbn-code title">
+      ISBN
+    </div>
+    <div class = "price title">
+      Price
+    </div>
+  </div>
+  <div class = "book-wrap" *ngFor = "let book of bookList">
+      <a class = 'add-book' routerLink='/book/{{book.id}}' [routerLinkActive]="['active']">Add New Book</a>
+    <div class = "author-name">{{book.author}} </div>
+    <div class = "book-title">{{book.title}}</div>
+    <div class = "pages-count">{{book.pages}} pages</div>
+    <div class = "isbn-code">{{book.isbn}}</div>
+    <div class = "price" *ngIf = "book.price">{{book.price | currency:UAH:true:'1.2-2'}}</div>
+  </div>
+  <a class = 'add-new-book' routerLink='/book/add' [routerLinkActive]="['active']">Add New Book</a>
+</div>
+
